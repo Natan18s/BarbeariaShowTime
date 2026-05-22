@@ -1,3 +1,3 @@
 # BarbeariaShowTime
 
-Projeto criado para estudar a programação
+Projeto criado para estudar Programação
