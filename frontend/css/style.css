@@ -1,0 +1,110 @@
+/* 
+  Remove margens e espaçamentos padrões do navegador
+  Isso evita diferenças entre navegadores
+*/
+*{
+  margin:0;
+  padding:0;
+
+  /* Faz largura e altura funcionarem corretamente */
+  box-sizing:border-box;
+}
+
+/* Estilização geral do corpo da página */
+body{
+
+  /* Fonte principal */
+  font-family:Arial, sans-serif;
+
+  /* Cor de fundo escura */
+  background:#111;
+
+  /* Cor do texto */
+  color:white;
+}
+
+/* Cabeçalho do site */
+header{
+
+  /* Coloca elementos lado a lado */
+  display:flex;
+
+  /* Joga um item para cada lado */
+  justify-content:space-between;
+
+  /* Centraliza verticalmente */
+  align-items:center;
+
+  /* Espaçamento interno */
+  padding:20px 50px;
+
+  /* Fundo preto */
+  background:#000;
+}
+
+/* Menu de navegação */
+nav{
+
+  /* Links ficam lado a lado */
+  display:flex;
+
+  /* Espaço entre links */
+  gap:20px;
+}
+
+/* Links do menu */
+nav a{
+
+  /* Cor branca */
+  color:white;
+
+  /* Remove sublinhado */
+  text-decoration:none;
+}
+
+/* Seção principal */
+.hero{
+
+  /* Altura da área */
+  height:80vh;
+
+  /* Flexbox */
+  display:flex;
+
+  /* Organiza em coluna */
+  flex-direction:column;
+
+  /* Centraliza verticalmente */
+  justify-content:center;
+
+  /* Centraliza horizontalmente */
+  align-items:center;
+
+  /* Espaço entre elementos */
+  gap:20px;
+
+  /* Centraliza texto */
+  text-align:center;
+}
+
+/* Botão */
+button{
+
+  /* Espaçamento interno */
+  padding:15px 30px;
+
+  /* Remove borda */
+  border:none;
+
+  /* Bordas arredondadas */
+  border-radius:10px;
+
+  /* Cor dourada */
+  background:gold;
+
+  /* Mãozinha ao passar mouse */
+  cursor:pointer;
+
+  /* Tamanho da fonte */
+  font-size:18px;
+}
