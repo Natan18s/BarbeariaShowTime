@@ -1,110 +1,441 @@
-/* 
-  Remove margens e espaçamentos padrões do navegador
-  Isso evita diferenças entre navegadores
-*/
-*{
-  margin:0;
-  padding:0;
+/* RESET */
 
-  /* Faz largura e altura funcionarem corretamente */
-  box-sizing:border-box;
+/* Seleciona TODOS os elementos da página */
+* {
+
+  margin: 0; /* Remove todas as margens padrão */
+
+  padding: 0; /* Remove todos os espaçamentos internos padrão */
+
+  box-sizing: border-box; /* Faz largura/altura incluírem padding e borda */
+
+  font-family: 'Segoe UI', sans-serif; /* Define a fonte padrão do site */
 }
 
-/* Estilização geral do corpo da página */
-body{
+/* BODY */
 
-  /* Fonte principal */
-  font-family:Arial, sans-serif;
+/* BODY = corpo inteiro da página */
+body {
 
-  /* Cor de fundo escura */
-  background:#111;
+  /* IMAGEM DE FUNDO */
+  background:
+  url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1920&auto=format&fit=crop') /* Imagem */
+  no-repeat /* Não repete a imagem */
+  center center /* Centraliza horizontal e vertical */
+  /cover; /* Faz a imagem preencher toda a tela */
 
-  /* Cor do texto */
-  color:white;
+  min-height: 100vh; /* Altura mínima = 100% da tela */
+
+  color: white; /* Cor padrão dos textos = branco */
 }
+
+/* CAMADA ESCURA */
+
+/* Camada transparente escura sobre o fundo */
+.overlay {
+
+  background: rgba(0, 0, 0, 0.75);
+  /* Preto com transparência 75% */
+
+  min-height: 100vh;
+  /* Faz ocupar toda altura da tela */
+
+  padding-bottom: 50px;
+  /* Espaço embaixo */
+}
+
+/* HEADER */
 
 /* Cabeçalho do site */
-header{
+header {
 
-  /* Coloca elementos lado a lado */
-  display:flex;
+  display: flex;
+  /* Ativa FLEXBOX */
 
-  /* Joga um item para cada lado */
-  justify-content:space-between;
+  justify-content: space-between;
+  /* Joga itens para os lados */
 
+  align-items: center;
   /* Centraliza verticalmente */
-  align-items:center;
 
-  /* Espaçamento interno */
-  padding:20px 50px;
+  padding: 25px 8%;
+  /* Espaço interno:
+     25px cima/baixo
+     8% lados */
 
-  /* Fundo preto */
-  background:#000;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  /* Linha dourada transparente */
+
+  backdrop-filter: blur(5px);
+  /* Efeito vidro desfocado */
 }
 
-/* Menu de navegação */
-nav{
+/* LOGO */
 
-  /* Links ficam lado a lado */
-  display:flex;
+/* Título/logo do header */
+header h1 {
 
-  /* Espaço entre links */
-  gap:20px;
-}
-
-/* Links do menu */
-nav a{
-
-  /* Cor branca */
-  color:white;
-
-  /* Remove sublinhado */
-  text-decoration:none;
-}
-
-/* Seção principal */
-.hero{
-
-  /* Altura da área */
-  height:80vh;
-
-  /* Flexbox */
-  display:flex;
-
-  /* Organiza em coluna */
-  flex-direction:column;
-
-  /* Centraliza verticalmente */
-  justify-content:center;
-
-  /* Centraliza horizontalmente */
-  align-items:center;
-
-  /* Espaço entre elementos */
-  gap:20px;
-
-  /* Centraliza texto */
-  text-align:center;
-}
-
-/* Botão */
-button{
-
-  /* Espaçamento interno */
-  padding:15px 30px;
-
-  /* Remove borda */
-  border:none;
-
-  /* Bordas arredondadas */
-  border-radius:10px;
-
+  color: #d4af37;
   /* Cor dourada */
-  background:gold;
 
-  /* Mãozinha ao passar mouse */
-  cursor:pointer;
+  font-size: 2rem;
+  /* Tamanho da letra */
 
+  letter-spacing: 2px;
+  /* Espaço entre letras */
+}
+
+/* MENU */
+
+/* Área dos links do menu */
+nav {
+
+  display: flex;
+  /* Links lado a lado */
+
+  gap: 30px;
+  /* Espaço entre os links */
+}
+
+/* LINKS */
+
+/* Todos os links do menu */
+nav a {
+
+  text-decoration: none;
+  /* Remove sublinhado */
+
+  color: white;
+  /* Cor branca */
+
+  font-weight: 600;
+  /* Texto mais grosso */
+
+  transition: 0.3s;
+  /* Animações suaves */
+
+  position: relative;
+  /* Necessário pro ::after funcionar */
+
+  
+}
+
+/* LINHA ANIMADA */
+
+/* Cria linha falsa embaixo do link */
+nav a::after {
+
+  content: '';
+  /* Cria elemento vazio */
+
+  width: 0%;
+  /* Linha começa invisível */
+
+  height: 2px;
+  /* Altura da linha */
+
+  background: #d4af37;
+  /* Cor dourada */
+
+  position: absolute;
+  /* Posicionamento livre */
+
+  left: 0;
+  /* Encosta na esquerda */
+
+  bottom: -5px;
+  /* Fica abaixo do texto */
+
+  transition: 0.3s;
+  /* Animação suave */
+
+
+}
+
+/* LINHA APARECE */
+
+/* Quando passa o mouse */
+nav a:hover::after {
+
+  width: 100%;
+  /* Linha cresce até o final */
+}
+
+/* TEXTO DOURADO */
+
+/* Hover = mouse em cima */
+nav a:hover {
+
+  color: #d4af37;
+  /* Texto vira dourado */
+}
+
+/* HERO */
+
+/* Área principal do topo */
+.hero {
+
+  text-align: center;
+  /* Centraliza textos */
+
+  padding: 100px 20px 70px;
+  /* Espaçamento interno */
+}
+
+/* TÍTULO PRINCIPAL */
+
+/* Título grande da hero */
+.hero h2 {
+
+  font-size: 3.5rem;
+  /* Tamanho gigante */
+
+  margin-bottom: 20px;
+  /* Espaço abaixo */
+
+  color: #d4af37;
+  /* Dourado */
+
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  /* Brilho dourado */
+}
+
+/* TEXTO HERO */
+
+/* Parágrafo da hero */
+.hero p {
+
+  font-size: 1.2rem;
   /* Tamanho da fonte */
-  font-size:18px;
+
+  color: #ddd;
+  /* Cinza claro */
+}
+
+/* SERVIÇOS */
+
+/* Seção de serviços */
+.servicos {
+
+  padding: 40px 8%;
+  /* Espaçamento interno */
+}
+
+/* TÍTULO SERVIÇOS */
+
+/* Título da seção */
+.servicos h2 {
+
+  text-align: center;
+  /* Centraliza */
+
+  font-size: 2.5rem;
+  /* Tamanho grande */
+
+  margin-bottom: 50px;
+  /* Espaço abaixo */
+
+  color: #d4af37;
+  /* Dourado */
+}
+
+/* CONTAINER DOS CARDS */
+
+/* Área que segura todos os cards */
+.container-cards {
+
+  display: flex;
+  /* Cards lado a lado */
+
+  justify-content: center;
+  /* Centraliza horizontalmente */
+
+  align-items: center;
+  /* Centraliza verticalmente */
+
+  gap: 30px;
+  /* Espaço entre cards */
+
+  flex-wrap: wrap;
+  /* Quebra linha no celular */
+}
+
+/* CARDS DE SERVIÇOS */
+
+/* Cada card individual */
+.card-servico {
+
+  width: 320px;
+  /* Largura fixa */
+
+  padding: 30px;
+  /* Espaço interno */
+
+  border-radius: 20px;
+  /* Bordas arredondadas */
+
+  background: rgba(255, 255, 255, 0.08);
+  /* Fundo transparente */
+
+  backdrop-filter: blur(12px);
+  /* Efeito vidro */
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* Borda transparente */
+
+  box-shadow:
+    0 0 15px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(0, 0, 0, 0.2);
+  /* Sombra */
+
+  transition: 0.4s;
+  /* Animação suave */
+
+}
+
+/* EFEITO HOVER */
+
+/* Quando passa o mouse no card */
+.card-servico:hover {
+
+  transform: translateY(-10px) scale(1.03);
+  /* Card sobe e aumenta */
+
+  border-color: #d4af37;
+  /* Borda dourada */
+
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.4),
+    0 0 40px rgba(212, 175, 55, 0.2);
+  /* Brilho dourado */
+}
+
+/* TÍTULO CARD */
+
+/* Título do card */
+.card-servico h3 {
+
+  font-size: 1.6rem;
+  /* Tamanho da fonte */
+
+  margin-bottom: 15px;
+  /* Espaço abaixo */
+
+  color: white;
+  /* Branco */
+
+  transition: 0.3s;
+  /* Animação */
+}
+
+/* TÍTULO DOURADO NO HOVER */
+
+/* Quando passa mouse no card */
+.card-servico:hover h3 {
+
+  color: #d4af37;
+  /* Título vira dourado */
+}
+
+/* PREÇO */
+
+/* Valor/preço */
+.preco {
+
+  font-size: 2rem;
+  /* Texto grande */
+
+  font-weight: bold;
+  /* Negrito */
+
+  margin-bottom: 15px;
+  /* Espaço abaixo */
+
+  color: white;
+  /* Branco */
+
+  transition: 0.3s;
+  /* Animação */
+}
+
+/* PREÇO DOURADO NO HOVER */
+
+/* Mouse em cima do card */
+.card-servico:hover .preco {
+
+  color: #d4af37;
+  /* Preço dourado */
+}
+
+/* DESCRIÇÃO */
+
+/* Texto do card */
+.card-servico p {
+
+  line-height: 1.6;
+  /* Espaço entre linhas */
+
+  color: #ddd;
+  /* Cinza claro */
+}
+
+/* TEXTO EXTRA */
+
+/* Texto pequeno extra */
+.card-servico span {
+
+  display: block;
+  /* Faz ocupar linha inteira */
+
+  margin-top: 15px;
+  /* Espaço acima */
+
+  color: #bbb;
+  /* Cinza */
+
+  font-size: 0.95rem;
+  /* Fonte menor */
+
+  transition: 0.3s;
+  /* Animação */
+}
+
+/* TEXTO EXTRA DOURADO */
+
+/* Hover no card */
+.card-servico:hover span {
+
+  color: #d4af37;
+  /* Texto dourado */
+}
+
+/* RESPONSIVO */
+
+/* Ativa quando tela <= 768px */
+@media (max-width: 768px) {
+
+  /* HEADER MOBILE */
+  header {
+
+    flex-direction: column;
+    /* Itens ficam um embaixo do outro */
+
+    gap: 15px;
+    /* Espaço entre itens */
+  }
+
+  /* TÍTULO MENOR */
+  .hero h2 {
+
+    font-size: 2.5rem;
+    /* Diminui título */
+  }
+
+  /* CARDS UM EMBAIXO DO OUTRO */
+  .container-cards {
+
+    flex-direction: column;
+    /* Cards em coluna */
+  }
+
 }

@@ -1,73 +1,134 @@
 <!-- Define que o documento usa HTML5 -->
 <!DOCTYPE html>
-<!-- Início do HTML -->
-<!-- lang="pt-BR" informa que o site está em português do Brasil -->
+<!-- Início do HTML e idioma do site -->
 <html lang="pt-BR">
 
 <head>
-  <!-- Permite acentos e caracteres especiais -->
+  <!-- Permite caracteres especiais e acentos -->
   <meta charset="UTF-8">
-  <!-- Faz o site funcionar corretamente em celulares -->
+  <!-- Faz o site funcionar corretamente no celular -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Nome que aparece na aba do navegador -->
-  <title>Barbearia</title>
+  <title>BarberShowTime</title>
 
-  <!-- Conecta o arquivo CSS ao HTML -->
-  <!-- Sem isso, o CSS não funciona -->
+  <!-- Conecta o arquivo CSS -->
   <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
+  <!-- Camada escura sobre a imagem de fundo -->
+  <div class="overlay">
+    <!-- Cabeçalho do site -->
+    <header>
+      <!-- Nome/logo da barbearia -->
+      <h1>BarberShowTime</h1>
 
-  <!-- Cabeçalho do site -->
-  <!-- Normalmente contém logo, menu e navegação -->
-  <header>
+      <!-- Menu de navegação -->
+      <nav>
+        
+        <a href="#">Cadastro</a> <!-- Link de cadastro -->
+        <a href="#">Login</a> <!-- Link de login -->
+      </nav>
 
-    <!-- Nome principal do site -->
-    <h1>BarberTime</h1>
+    </header>
 
-    <!-- Menu de navegação -->
-    <nav>
+    <!-- Conteúdo principal -->
+    <main>
 
-      <!-- Links do menu -->
-      <!-- # significa link vazio temporário -->
-      <a href="#">Início</a>
-      <a href="#">Serviços</a>
-      <a href="#">Agendar</a>
+      <!-- Seção principal do topo -->
+      <section class="hero">
 
-    </nav>
+        <!-- Título principal -->
+        <h2>Seu estilo começa aqui</h2>
 
-  </header>
+        <!-- Texto abaixo do título -->
+        <p>
+          Cortes modernos, barba terapia e atendimento premium.
+        </p>
 
-  <!-- Conteúdo principal do site -->
-  <main>
+      </section>
 
-    <!-- Seção principal do site -->
-    <!-- class="hero" serve para estilizar no CSS -->
-    <section class="hero">
+      <!-- Área dos serviços -->
+      <section class="servicos">
 
-      <!-- Título principal -->
-      <h2>Seu corte profissional</h2>
+        <!-- Título da seção -->
+        <h2>Nossos Serviços</h2>
 
-      <!-- Texto descritivo -->
-      <p>
-        Agende seu horário online.
-      </p>
+        <!-- Container que guarda todos os cards -->
+        <div class="container-cards">
 
-      <!-- Botão -->
-      <button>
-        Agendar Agora
-      </button>
+          <!-- Card do serviço 1 -->
+          <div class="card-servico">
 
-    </section>
+            <!-- Nome do serviço -->
+            <h3>Corte de Cabelo</h3>
 
-  </main>
+            <!-- Preço -->
+            <p class="preco">
+              R$ 35,00
+            </p>
 
-  <!-- Conecta o JavaScript -->
-  <!-- Colocado no final para carregar mais rápido -->
-  <script src="js/script.js"></script>
+            <!-- Descrição -->
+            <p>
+              Corte moderno com acabamento profissional.
+            </p>
 
+            <!-- Informação extra -->
+            <span>
+              Limpeza de sobrancelha inclusa.
+            </span>
+
+          </div>
+
+          <!-- Card do serviço 2 -->
+          <div class="card-servico">
+
+            <h3>Barba Terapia</h3>
+
+            <p class="preco">
+              R$ 30,00
+            </p>
+
+            <p>
+              Modelagem completa e hidratação da barba.
+            </p>
+
+            <span>
+              Limpeza de sobrancelha inclusa.
+            </span>
+
+          </div>
+
+          <!-- Card do serviço 3 -->
+          <div class="card-servico">
+
+            <h3>Cabelo + Barba</h3>
+
+            <p class="preco">
+              R$ 60,00
+            </p>
+
+            <p>
+              Combo completo para renovar seu visual.
+            </p>
+
+            <span>
+              Limpeza de sobrancelha inclusa.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  
+</script>
 </body>
+
 </html>
