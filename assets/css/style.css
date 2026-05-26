@@ -1,4 +1,251 @@
 /* =========================
+   RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+  font-family:'Segoe UI', sans-serif;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.75)
+    ),
+
+    url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1920&auto=format&fit=crop')
+    center center
+    /cover;
+
+  min-height:100vh;
+
+  color:white;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay{
+
+  min-height:100vh;
+
+  background:rgba(0,0,0,0.4);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:25px 8%;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.1);
+}
+
+/* =========================
+   LOGO
+========================= */
+
+header h1{
+
+  color:#d4af37;
+
+  font-size:2rem;
+}
+
+/* =========================
+   MENU
+========================= */
+
+nav{
+
+  display:flex;
+
+  gap:25px;
+}
+
+/* LINKS */
+
+nav a{
+
+  color:white;
+
+  text-decoration:none;
+
+  font-weight:600;
+
+  transition:0.3s;
+}
+
+/* HOVER */
+
+nav a:hover{
+
+  color:#d4af37;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+  text-align:center;
+
+  padding:120px 20px 80px;
+}
+
+/* TÍTULO */
+
+.hero h2{
+
+  font-size:3.5rem;
+
+  color:#d4af37;
+
+  margin-bottom:20px;
+}
+
+/* TEXTO */
+
+.hero p{
+
+  font-size:1.2rem;
+
+  color:#ddd;
+}
+
+/* =========================
+   SERVIÇOS
+========================= */
+
+.servicos{
+
+  padding:40px 8%;
+}
+
+/* TÍTULO */
+
+.servicos h2{
+
+  text-align:center;
+
+  margin-bottom:50px;
+
+  font-size:2.5rem;
+
+  color:#d4af37;
+}
+
+/* =========================
+   CONTAINER CARDS
+========================= */
+
+.container-cards{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:30px;
+
+  flex-wrap:wrap;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card-servico{
+
+  width:320px;
+
+  padding:30px;
+
+  border-radius:20px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(10px);
+
+  border:
+    1px solid rgba(255,255,255,0.1);
+
+  transition:0.3s;
+}
+
+/* HOVER CARD */
+
+.card-servico:hover{
+
+  transform:
+    translateY(-10px);
+
+  border-color:#d4af37;
+}
+
+/* TÍTULO CARD */
+
+.card-servico h3{
+
+  font-size:1.6rem;
+
+  margin-bottom:15px;
+}
+
+/* PREÇO */
+
+.preco{
+
+  font-size:2rem;
+
+  color:#d4af37;
+
+  margin-bottom:15px;
+
+  font-weight:bold;
+}
+
+/* TEXTO */
+
+.card-servico p{
+
+  line-height:1.6;
+
+  color:#ddd;
+}
+
+/* EXTRA */
+
+.card-servico span{
+
+  display:block;
+
+  margin-top:15px;
+
+  color:#bbb;
+}
+
+/* =========================
    BOTÃO AGENDAR
 ========================= */
 
@@ -30,4 +277,24 @@
   transform:scale(1.05);
 
   opacity:0.9;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:768px){
+
+  header{
+
+    flex-direction:column;
+
+    gap:20px;
+  }
+
+  .hero h2{
+
+    font-size:2.5rem;
+  }
+
 }
