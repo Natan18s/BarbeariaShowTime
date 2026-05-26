@@ -4,10 +4,10 @@
 
 <head>
 
-  <!-- Caracteres especiais -->
+  <!-- Caracteres -->
   <meta charset="UTF-8">
 
-  <!-- Responsividade -->
+  <!-- Responsivo -->
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -41,10 +41,18 @@
       Escolha uma data e um horário disponível
     </p>
 
+    <!-- STATUS LOGIN -->
+    <div class="status-login">
+
+      <span id="statusUsuario">
+        Você não está logado
+      </span>
+
+    </div>
+
     <!-- LEGENDA -->
     <div class="legenda">
 
-      <!-- DISPONÍVEL -->
       <div class="legenda-item">
 
         <div class="cor disponivel-box"></div>
@@ -55,7 +63,6 @@
 
       </div>
 
-      <!-- OCUPADO -->
       <div class="legenda-item">
 
         <div class="cor ocupado-box"></div>
@@ -66,183 +73,59 @@
 
       </div>
 
+      <div class="legenda-item">
+
+        <div class="cor passado-box"></div>
+
+        <span>
+          Horário Passado
+        </span>
+
+      </div>
+
     </div>
+
+    <!-- MÊS -->
+    <h2 id="mesAtual"></h2>
 
     <!-- CALENDÁRIO -->
-    <div class="calendario">
-
-      <!-- DIAS DA SEMANA -->
-      <div class="semana">Dom</div>
-      <div class="semana">Seg</div>
-      <div class="semana">Ter</div>
-      <div class="semana">Qua</div>
-      <div class="semana">Qui</div>
-      <div class="semana">Sex</div>
-      <div class="semana">Sáb</div>
-
-      <!-- DIAS -->
-      <button class="dia">
-        1
-      </button>
-
-      <button class="dia">
-        2
-      </button>
-
-      <button class="dia">
-        3
-      </button>
-
-      <button class="dia">
-        4
-      </button>
-
-      <button class="dia">
-        5
-      </button>
-
-      <button class="dia">
-        6
-      </button>
-
-      <button class="dia">
-        7
-      </button>
-
-      <button class="dia">
-        8
-      </button>
-
-      <button class="dia">
-        9
-      </button>
-
-      <button class="dia">
-        10
-      </button>
-
-      <button class="dia">
-        11
-      </button>
-
-      <button class="dia">
-        12
-      </button>
-
-      <button class="dia">
-        13
-      </button>
-
-      <button class="dia">
-        14
-      </button>
-
-      <button class="dia">
-        15
-      </button>
-
-      <button class="dia">
-        16
-      </button>
-
-      <button class="dia">
-        17
-      </button>
-
-      <button class="dia">
-        18
-      </button>
-
-      <button class="dia">
-        19
-      </button>
-
-      <button class="dia">
-        20
-      </button>
-
-      <button class="dia">
-        21
-      </button>
-
-      <button class="dia">
-        22
-      </button>
-
-      <button class="dia">
-        23
-      </button>
-
-      <button class="dia">
-        24
-      </button>
-
-      <button class="dia">
-        25
-      </button>
-
-      <button class="dia">
-        26
-      </button>
-
-      <button class="dia">
-        27
-      </button>
-
-      <button class="dia">
-        28
-      </button>
-
-      <button class="dia">
-        29
-      </button>
-
-      <button class="dia">
-        30
-      </button>
-
+    <div
+      class="calendario"
+      id="calendario"
+    >
     </div>
 
-    <!-- ÁREA HORÁRIOS -->
+    <!-- HORÁRIOS -->
     <div class="horarios-container">
 
-      <!-- TÍTULO -->
       <h2>
         Horários
       </h2>
 
-      <!-- HORÁRIOS -->
-      <div class="horarios">
-
-        <button class="horario disponivel">
-          09:00
-        </button>
-
-        <button class="horario ocupado">
-          10:00
-        </button>
-
-        <button class="horario disponivel">
-          11:00
-        </button>
-
-        <button class="horario ocupado">
-          13:00
-        </button>
-
-        <button class="horario disponivel">
-          14:00
-        </button>
-
-        <button class="horario disponivel">
-          15:00
-        </button>
-
-        <button class="horario ocupado">
-          16:00
-        </button>
-
+      <div
+        class="horarios"
+        id="horarios"
+      >
       </div>
+
+    </div>
+
+    <!-- BOTÕES -->
+    <div class="acoes">
+
+      <!-- AGENDAR -->
+      <button id="btnAgendar">
+
+        Agendar Horário
+
+      </button>
+
+      <!-- LIMPAR -->
+      <button id="btnLimpar">
+
+        Remover Seleção
+
+      </button>
 
     </div>
 
