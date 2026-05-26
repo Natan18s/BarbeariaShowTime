@@ -1,34 +1,55 @@
 <!-- Define que o documento usa HTML5 -->
 <!DOCTYPE html>
+
 <!-- Início do HTML e idioma do site -->
 <html lang="pt-BR">
 
 <head>
+
   <!-- Permite caracteres especiais e acentos -->
   <meta charset="UTF-8">
+
   <!-- Faz o site funcionar corretamente no celular -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Descrição do site -->
+  <meta
+    name="description"
+    content="Barbearia moderna com agendamento online"
+  >
 
   <!-- Nome que aparece na aba do navegador -->
   <title>BarberShowTime</title>
 
-  <!-- Conecta o arquivo CSS -->
+  <!-- Conecta o CSS -->
+  <link rel="stylesheet" href="assets/css/home.css">
 
 </head>
 
 <body>
-  <!-- Camada escura sobre a imagem de fundo -->
+
+  <!-- Camada escura sobre a imagem -->
   <div class="overlay">
+
     <!-- Cabeçalho do site -->
     <header>
-      <!-- Nome/logo da barbearia -->
+
+      <!-- Nome/logo -->
       <h1>BarberShowTime</h1>
 
-      <!-- Menu de navegação -->
-      <nav>
-        
-        <a href="#">Cadastro</a> <!-- Link de cadastro -->
-        <a href="#">Login</a> <!-- Link de login -->
+      <!-- Menu principal -->
+      <nav aria-label="Menu principal">
+
+        <!-- Link cadastro -->
+        <a href="cadastro.html">
+          Cadastro
+        </a>
+
+        <!-- Link login -->
+        <a href="login.html">
+          Login
+        </a>
+
       </nav>
 
     </header>
@@ -36,13 +57,15 @@
     <!-- Conteúdo principal -->
     <main>
 
-      <!-- Seção principal do topo -->
+      <!-- Área principal -->
       <section class="hero">
 
-        <!-- Título principal -->
-        <h2>Seu estilo começa aqui</h2>
+        <!-- Título -->
+        <h2>
+          Seu estilo começa aqui
+        </h2>
 
-        <!-- Texto abaixo do título -->
+        <!-- Texto -->
         <p>
           Cortes modernos, barba terapia e atendimento premium.
         </p>
@@ -52,39 +75,41 @@
       <!-- Área dos serviços -->
       <section class="servicos">
 
-        <!-- Título da seção -->
-        <h2>Nossos Serviços</h2>
+        <!-- Título -->
+        <h2>
+          Nossos Serviços
+        </h2>
 
-        <!-- Container que guarda todos os cards -->
+        <!-- Container dos cards -->
         <div class="container-cards">
 
-          <!-- Card do serviço 1 -->
+          <!-- Card 1 -->
           <div class="card-servico">
 
-            <!-- Nome do serviço -->
-            <h3>Corte de Cabelo</h3>
+            <h3>
+              Corte de Cabelo
+            </h3>
 
-            <!-- Preço -->
             <p class="preco">
               R$ 35,00
             </p>
 
-            <!-- Descrição -->
             <p>
               Corte moderno com acabamento profissional.
             </p>
 
-            <!-- Informação extra -->
             <span>
               Limpeza de sobrancelha inclusa.
             </span>
 
           </div>
 
-          <!-- Card do serviço 2 -->
+          <!-- Card 2 -->
           <div class="card-servico">
 
-            <h3>Barba Terapia</h3>
+            <h3>
+              Barba Terapia
+            </h3>
 
             <p class="preco">
               R$ 30,00
@@ -100,10 +125,12 @@
 
           </div>
 
-          <!-- Card do serviço 3 -->
+          <!-- Card 3 -->
           <div class="card-servico">
 
-            <h3>Cabelo + Barba</h3>
+            <h3>
+              Cabelo + Barba
+            </h3>
 
             <p class="preco">
               R$ 60,00
@@ -126,10 +153,10 @@
     </main>
 
   </div>
-  
-<script src="js/script.js"></script>
-<link rel="stylesheet" href="css/style.css">
-  
+
+  <!-- Conecta o JavaScript -->
+  <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
