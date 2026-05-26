@@ -1,19 +1,91 @@
-// Seleciona formulário
-const form = document.querySelector("#formCadastro");
+// =====================================
+// FORMULÁRIO
+// =====================================
 
-// Seleciona senha
-const senha = document.querySelector("#senha");
+const form =
+  document.querySelector("#formCadastro");
 
-// Seleciona confirmar senha
-const confirmarSenha = document.querySelector("#confirmarSenha");
+// =====================================
+// TELEFONE
+// =====================================
 
-// Botão mostrar senha
-const mostrarSenha = document.querySelector("#mostrarSenha");
+const telefone =
+  document.querySelector("#telefone");
 
+// =====================================
+// SENHAS
+// =====================================
+
+const senha =
+  document.querySelector("#senha");
+
+const confirmarSenha =
+  document.querySelector("#confirmarSenha");
+
+// =====================================
+// BOTÕES MOSTRAR SENHA
+// =====================================
+
+const mostrarSenha =
+  document.querySelector("#mostrarSenha");
+
+const mostrarConfirmarSenha =
+  document.querySelector("#mostrarConfirmarSenha");
+
+// =====================================
+// MÁSCARA TELEFONE
+// =====================================
+
+telefone.addEventListener("input", (e) => {
+
+  // Remove tudo que não é número
+  let valor =
+    e.target.value.replace(/\D/g, "");
+
+  // Limita 11 números
+  valor = valor.slice(0, 11);
+
+  // Formata telefone
+  if(valor.length > 10){
+
+    valor = valor.replace(
+      /^(\d{2})(\d{5})(\d{4}).*/,
+      "($1) $2-$3"
+    );
+
+  }else if(valor.length > 6){
+
+    valor = valor.replace(
+      /^(\d{2})(\d{4})(\d{0,4}).*/,
+      "($1) $2-$3"
+    );
+
+  }else if(valor.length > 2){
+
+    valor = valor.replace(
+      /^(\d{2})(\d{0,5})/,
+      "($1) $2"
+    );
+
+  }else{
+
+    valor = valor.replace(
+      /^(\d*)/,
+      "($1"
+    );
+  }
+
+  // Atualiza valor
+  e.target.value = valor;
+
+});
+
+// =====================================
 // MOSTRAR SENHA
+// =====================================
+
 mostrarSenha.addEventListener("click", () => {
 
-  // Verifica tipo atual
   if(senha.type === "password"){
 
     senha.type = "text";
@@ -25,19 +97,43 @@ mostrarSenha.addEventListener("click", () => {
 
 });
 
+// =====================================
+// MOSTRAR CONFIRMAR SENHA
+// =====================================
+
+mostrarConfirmarSenha.addEventListener("click", () => {
+
+  if(confirmarSenha.type === "password"){
+
+    confirmarSenha.type = "text";
+
+  }else{
+
+    confirmarSenha.type = "password";
+  }
+
+});
+
+// =====================================
 // ENVIO FORMULÁRIO
+// =====================================
+
 form.addEventListener("submit", (event) => {
 
-  // Impede recarregar
+  // Impede reload
   event.preventDefault();
 
-  // Remove espaços
-  const senhaValor = senha.value.trim();
+  // Valores senha
+  const senhaValor =
+    senha.value.trim();
 
   const confirmarValor =
     confirmarSenha.value.trim();
 
-  // Verifica senhas
+  // =====================================
+  // SENHAS DIFERENTES
+  // =====================================
+
   if(senhaValor !== confirmarValor){
 
     alert("As senhas não coincidem.");
@@ -45,7 +141,10 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  // Verifica tamanho senha
+  // =====================================
+  // SENHA CURTA
+  // =====================================
+
   if(senhaValor.length < 6){
 
     alert(
@@ -55,7 +154,26 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  // Cadastro fake temporário
+  // =====================================
+  // TELEFONE INVÁLIDO
+  // =====================================
+
+  const numerosTelefone =
+    telefone.value.replace(/\D/g, "");
+
+  if(numerosTelefone.length !== 11){
+
+    alert(
+      "Digite um telefone válido com 11 dígitos."
+    );
+
+    return;
+  }
+
+  // =====================================
+  // CADASTRO OK
+  // =====================================
+
   alert("Cadastro realizado com sucesso!");
 
 });

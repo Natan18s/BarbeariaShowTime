@@ -4,13 +4,16 @@
 
 <head>
 
+  <!-- Caracteres especiais -->
   <meta charset="UTF-8">
 
+  <!-- Responsividade -->
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
 
+  <!-- Título -->
   <title>Cadastro | BarberShowTime</title>
 
   <!-- CSS -->
@@ -62,6 +65,7 @@
             type="tel"
             id="telefone"
             placeholder="(21) 99999-9999"
+            maxlength="15"
             required
           >
 
@@ -78,6 +82,7 @@
             type="number"
             id="idade"
             placeholder="Sua idade"
+            min="1"
             required
           >
 
@@ -90,12 +95,34 @@
             Tipo de cabelo
           </label>
 
-          <input
-            type="text"
-            id="cabelo"
-            placeholder="Ex: Liso, Cacheado, Crespo, Ondulado..."
-            required
-          >
+          <!-- Lista de opções -->
+          <select id="cabelo" required>
+
+            <option value="">
+              Selecione seu tipo de cabelo
+            </option>
+
+            <option>
+              Liso
+            </option>
+
+            <option>
+              Ondulado
+            </option>
+
+            <option>
+              Cacheado
+            </option>
+
+            <option>
+              Crespo
+            </option>
+
+            <option>
+              Afro
+            </option>
+
+          </select>
 
         </div>
 
@@ -152,12 +179,26 @@
             Confirmar Senha
           </label>
 
-          <input
-            type="password"
-            id="confirmarSenha"
-            placeholder="Digite novamente"
-            required
-          >
+          <!-- Caixa -->
+          <div class="senha-box">
+
+            <input
+              type="password"
+              id="confirmarSenha"
+              placeholder="Digite novamente"
+              required
+            >
+
+            <!-- Botão mostrar -->
+            <button
+              type="button"
+              class="mostrar-senha"
+              id="mostrarConfirmarSenha"
+            >
+              👁
+            </button>
+
+          </div>
 
         </div>
 
@@ -171,7 +212,7 @@
 
       </form>
 
-      <!-- Login -->
+      <!-- Link login -->
       <p class="login-link">
 
         Já possui conta?
@@ -186,7 +227,7 @@
 
   </div>
 
-  <!-- JS -->
+  <!-- JavaScript -->
   <script src="assets/js/cadastro.js"></script>
 
 </body>
