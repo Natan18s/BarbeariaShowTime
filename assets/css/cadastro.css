@@ -20,8 +20,8 @@ body{
 
   background:
     linear-gradient(
-      rgba(0,0,0,0.8),
-      rgba(0,0,0,0.8)
+      rgba(0,0,0,0.85),
+      rgba(0,0,0,0.85)
     ),
     url('https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?q=80&w=1920&auto=format&fit=crop')
     center/cover;
@@ -41,20 +41,20 @@ body{
   padding:20px;
 }
 
-/* FORMULÁRIO */
+/* FORM BOX */
 .form-box{
 
   width:100%;
 
   max-width:450px;
 
-  background:rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(10px);
-
   padding:40px;
 
   border-radius:20px;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(10px);
 
   border:
     1px solid rgba(255,255,255,0.15);
@@ -70,7 +70,7 @@ body{
   color:#d4af37;
 }
 
-/* GRUPO INPUT */
+/* INPUT GROUP */
 .input-group{
 
   display:flex;
@@ -91,6 +91,8 @@ label{
 /* INPUT */
 input{
 
+  width:100%;
+
   padding:15px;
 
   border:none;
@@ -110,8 +112,34 @@ input::placeholder{
   color:#ccc;
 }
 
-/* BOTÃO */
-button{
+/* SENHA BOX */
+.senha-box{
+
+  position:relative;
+}
+
+/* BOTÃO OLHO */
+.mostrar-senha{
+
+  position:absolute;
+
+  right:10px;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  border:none;
+
+  background:none;
+
+  cursor:pointer;
+
+  font-size:18px;
+}
+
+/* BOTÃO CADASTRO */
+.btn-cadastro{
 
   width:100%;
 
@@ -134,15 +162,15 @@ button{
   transition:0.3s;
 }
 
-/* HOVER BOTÃO */
-button:hover{
+/* HOVER */
+.btn-cadastro:hover{
 
   transform:scale(1.03);
 
   opacity:0.9;
 }
 
-/* TEXTO LOGIN */
+/* LOGIN */
 .login-link{
 
   margin-top:20px;
@@ -150,7 +178,7 @@ button:hover{
   text-align:center;
 }
 
-/* LINK LOGIN */
+/* LINK */
 .login-link a{
 
   color:#d4af37;

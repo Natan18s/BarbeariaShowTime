@@ -1,21 +1,16 @@
-<!-- Define HTML5 -->
 <!DOCTYPE html>
 
-<!-- Idioma -->
 <html lang="pt-BR">
 
 <head>
 
-  <!-- Caracteres especiais -->
   <meta charset="UTF-8">
 
-  <!-- Responsividade -->
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
 
-  <!-- Título -->
   <title>Cadastro | BarberShowTime</title>
 
   <!-- CSS -->
@@ -31,14 +26,14 @@
   <!-- Container principal -->
   <div class="container">
 
-    <!-- Caixa do formulário -->
+    <!-- Caixa formulário -->
     <div class="form-box">
 
       <!-- Título -->
       <h1>Crie sua conta</h1>
 
       <!-- Formulário -->
-      <form>
+      <form id="formCadastro">
 
         <!-- Nome -->
         <div class="input-group">
@@ -50,7 +45,8 @@
           <input
             type="text"
             id="nome"
-            placeholder="Digite seu nome"
+            placeholder="Digite seu nome completo"
+            required
           >
 
         </div>
@@ -66,6 +62,7 @@
             type="tel"
             id="telefone"
             placeholder="(21) 99999-9999"
+            required
           >
 
         </div>
@@ -81,6 +78,7 @@
             type="number"
             id="idade"
             placeholder="Sua idade"
+            required
           >
 
         </div>
@@ -95,7 +93,8 @@
           <input
             type="text"
             id="cabelo"
-            placeholder="Ex: Cacheado"
+            placeholder="Ex: Liso, Cacheado, Crespo, Ondulado..."
+            required
           >
 
         </div>
@@ -111,6 +110,7 @@
             type="email"
             id="email"
             placeholder="Digite seu email"
+            required
           >
 
         </div>
@@ -122,22 +122,56 @@
             Senha
           </label>
 
+          <!-- Caixa senha -->
+          <div class="senha-box">
+
+            <input
+              type="password"
+              id="senha"
+              placeholder="Digite sua senha"
+              required
+            >
+
+            <!-- Botão mostrar -->
+            <button
+              type="button"
+              class="mostrar-senha"
+              id="mostrarSenha"
+            >
+              👁
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- Confirmar senha -->
+        <div class="input-group">
+
+          <label for="confirmarSenha">
+            Confirmar Senha
+          </label>
+
           <input
             type="password"
-            id="senha"
-            placeholder="Digite sua senha"
+            id="confirmarSenha"
+            placeholder="Digite novamente"
+            required
           >
 
         </div>
 
         <!-- Botão -->
-        <button type="submit">
+        <button
+          type="submit"
+          class="btn-cadastro"
+        >
           Cadastrar
         </button>
 
       </form>
 
-      <!-- Link login -->
+      <!-- Login -->
       <p class="login-link">
 
         Já possui conta?
@@ -152,7 +186,7 @@
 
   </div>
 
-  <!-- JavaScript -->
+  <!-- JS -->
   <script src="assets/js/cadastro.js"></script>
 
 </body>
