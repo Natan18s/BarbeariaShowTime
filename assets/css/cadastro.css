@@ -111,11 +111,10 @@ label{
 }
 
 /* =========================
-   INPUTS E SELECT
+   INPUTS
 ========================= */
 
-input,
-select{
+input{
 
   width:100%;
 
@@ -132,17 +131,6 @@ select{
   color:white;
 
   font-size:1rem;
-}
-
-/* =========================
-   OPÇÕES SELECT
-========================= */
-
-select option{
-
-  background:#222;
-
-  color:white;
 }
 
 /* =========================

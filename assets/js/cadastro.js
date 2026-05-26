@@ -38,14 +38,14 @@ const mostrarConfirmarSenha =
 
 telefone.addEventListener("input", (e) => {
 
-  // Remove tudo que não é número
+  // Remove caracteres não numéricos
   let valor =
     e.target.value.replace(/\D/g, "");
 
   // Limita 11 números
   valor = valor.slice(0, 11);
 
-  // Formata telefone
+  // Formatação telefone
   if(valor.length > 10){
 
     valor = valor.replace(
@@ -75,7 +75,7 @@ telefone.addEventListener("input", (e) => {
     );
   }
 
-  // Atualiza valor
+  // Atualiza campo
   e.target.value = valor;
 
 });
