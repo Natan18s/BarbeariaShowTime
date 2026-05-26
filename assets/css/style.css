@@ -1,0 +1,33 @@
+/* =========================
+   BOTÃO AGENDAR
+========================= */
+
+.btn-agendar{
+
+  display:inline-block;
+
+  margin-top:20px;
+
+  padding:12px 20px;
+
+  border-radius:10px;
+
+  background:#d4af37;
+
+  color:black;
+
+  text-decoration:none;
+
+  font-weight:bold;
+
+  transition:0.3s;
+}
+
+/* HOVER */
+
+.btn-agendar:hover{
+
+  transform:scale(1.05);
+
+  opacity:0.9;
+}
