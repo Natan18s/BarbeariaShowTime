@@ -1,6 +1,6 @@
-// ======================================
+// =====================================
 // ELEMENTOS
-// ======================================
+// =====================================
 
 const datasDiv =
   document.querySelector("#datas");
@@ -11,16 +11,22 @@ const horariosDiv =
 const btnConfirmar =
   document.querySelector("#btnConfirmar");
 
-// ======================================
-// DATA ATUAL
-// ======================================
+// =====================================
+// BOTÃO COMEÇA DESATIVADO
+// =====================================
+
+btnConfirmar.disabled = true;
+
+// =====================================
+// DATA HOJE
+// =====================================
 
 const hoje =
   new Date();
 
-// ======================================
+// =====================================
 // HORÁRIOS
-// ======================================
+// =====================================
 
 const horarios = [
 
@@ -37,9 +43,9 @@ const horarios = [
 
 ];
 
-// ======================================
+// =====================================
 // AGENDAMENTOS
-// ======================================
+// =====================================
 
 let agendamentos =
   JSON.parse(
@@ -48,17 +54,17 @@ let agendamentos =
     )
   ) || [];
 
-// ======================================
+// =====================================
 // SELEÇÕES
-// ======================================
+// =====================================
 
 let dataSelecionada = null;
 
 let horarioSelecionado = null;
 
-// ======================================
+// =====================================
 // GERAR DATAS
-// ======================================
+// =====================================
 
 for(let i = 0; i < 30; i++){
 
@@ -82,12 +88,12 @@ for(let i = 0; i < 30; i++){
       data.getDate()
     ).padStart(2,"0");
 
-  const dataFormatada =
+  const dataCompleta =
     `${ano}-${mes}-${dia}`;
 
-  // ======================================
+  // =====================================
   // BOTÃO
-  // ======================================
+  // =====================================
 
   const botao =
     document.createElement(
@@ -102,9 +108,9 @@ for(let i = 0; i < 30; i++){
   botao.innerText =
     `${dia}/${mes}`;
 
-  // ======================================
+  // =====================================
   // CLIQUE
-  // ======================================
+  // =====================================
 
   botao.addEventListener(
     "click",
@@ -127,7 +133,13 @@ for(let i = 0; i < 30; i++){
       );
 
       dataSelecionada =
-        dataFormatada;
+        dataCompleta;
+
+      horarioSelecionado =
+        null;
+
+      btnConfirmar.disabled =
+        true;
 
       gerarHorarios();
 
@@ -140,9 +152,9 @@ for(let i = 0; i < 30; i++){
 
 }
 
-// ======================================
+// =====================================
 // GERAR HORÁRIOS
-// ======================================
+// =====================================
 
 function gerarHorarios(){
 
@@ -150,25 +162,12 @@ function gerarHorarios(){
 
   horarios.forEach((hora) => {
 
-    const botao =
-      document.createElement(
-        "button"
-      );
-
-    botao.classList.add(
-      "horario-btn"
-    );
-
-    // ======================================
-    // DATA HORÁRIO
-    // ======================================
-
     const dataHora =
       `${dataSelecionada}T${hora}`;
 
-    // ======================================
-    // AGENDADO
-    // ======================================
+    // =====================================
+    // VERIFICA OCUPADO
+    // =====================================
 
     const ocupado =
       agendamentos.some(
@@ -182,31 +181,50 @@ function gerarHorarios(){
         }
       );
 
-    // ======================================
-    // TEXTO
-    // ======================================
+    // =====================================
+    // BOTÃO
+    // =====================================
+
+    const botao =
+      document.createElement(
+        "button"
+      );
+
+    botao.classList.add(
+      "horario-btn"
+    );
+
+    // =====================================
+    // OCUPADO
+    // =====================================
 
     if(ocupado){
-
-      botao.innerText =
-        `${hora}\nHorário Ocupado`;
 
       botao.classList.add(
         "ocupado"
       );
 
-    }else{
-
       botao.innerText =
-        hora;
+        `${hora}\nHorário Ocupado`;
+
+    }
+
+    // =====================================
+    // DISPONÍVEL
+    // =====================================
+
+    else{
 
       botao.classList.add(
         "disponivel"
       );
 
-      // ======================================
+      botao.innerText =
+        hora;
+
+      // =====================================
       // CLIQUE
-      // ======================================
+      // =====================================
 
       botao.addEventListener(
         "click",
@@ -231,6 +249,9 @@ function gerarHorarios(){
           horarioSelecionado =
             hora;
 
+          btnConfirmar.disabled =
+            false;
+
         }
       );
 
@@ -244,17 +265,17 @@ function gerarHorarios(){
 
 }
 
-// ======================================
+// =====================================
 // CONFIRMAR
-// ======================================
+// =====================================
 
 btnConfirmar.addEventListener(
   "click",
   () => {
 
-    // ======================================
+    // =====================================
     // LOGIN
-    // ======================================
+    // =====================================
 
     const usuario =
       localStorage.getItem(
@@ -270,40 +291,14 @@ btnConfirmar.addEventListener(
       return;
     }
 
-    // ======================================
-    // DATA
-    // ======================================
-
-    if(!dataSelecionada){
-
-      alert(
-        "Selecione uma data."
-      );
-
-      return;
-    }
-
-    // ======================================
-    // HORÁRIO
-    // ======================================
-
-    if(!horarioSelecionado){
-
-      alert(
-        "Selecione um horário."
-      );
-
-      return;
-    }
-
-    // ======================================
-    // CONFIRMAÇÃO
-    // ======================================
+    // =====================================
+    // CONFIRMA
+    // =====================================
 
     const confirmar =
       confirm(
 
-        `Deseja confirmar o agendamento?\n\nDia: ${dataSelecionada}\nHorário: ${horarioSelecionado}`
+        `Deseja confirmar o agendamento?\n\nData: ${dataSelecionada}\nHorário: ${horarioSelecionado}`
 
       );
 
@@ -312,9 +307,9 @@ btnConfirmar.addEventListener(
       return;
     }
 
-    // ======================================
+    // =====================================
     // SALVAR
-    // ======================================
+    // =====================================
 
     const novoAgendamento = {
 
@@ -339,20 +334,23 @@ btnConfirmar.addEventListener(
 
     );
 
-    // ======================================
+    // =====================================
     // SUCESSO
-    // ======================================
+    // =====================================
 
     alert(
       "Agendamento realizado com sucesso!"
     );
 
-    // ======================================
+    // =====================================
     // RESET
-    // ======================================
+    // =====================================
 
     horarioSelecionado =
       null;
+
+    btnConfirmar.disabled =
+      true;
 
     gerarHorarios();
 

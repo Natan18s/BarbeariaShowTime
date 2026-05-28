@@ -1,4 +1,6 @@
-/* RESET */
+/* =====================================
+RESET
+===================================== */
 
 *{
   margin:0;
@@ -6,7 +8,9 @@
   box-sizing:border-box;
 }
 
-/* BODY */
+/* =====================================
+BODY
+===================================== */
 
 body{
 
@@ -26,10 +30,12 @@ body{
 
   color:white;
 
-  padding:30px;
+  padding:20px;
 }
 
-/* VOLTAR */
+/* =====================================
+VOLTAR
+===================================== */
 
 .btn-voltar{
 
@@ -39,22 +45,26 @@ body{
 
   left:20px;
 
-  text-decoration:none;
-
   color:#d4af37;
+
+  text-decoration:none;
 
   font-weight:bold;
 
   font-size:1rem;
 }
 
-/* CONTAINER */
+/* =====================================
+CONTAINER
+===================================== */
 
 .container{
 
   max-width:1200px;
 
   margin:auto;
+
+  margin-top:60px;
 
   padding:40px;
 
@@ -64,11 +74,11 @@ body{
     rgba(255,255,255,0.08);
 
   backdrop-filter:blur(10px);
-
-  margin-top:50px;
 }
 
-/* TÍTULO */
+/* =====================================
+TÍTULO
+===================================== */
 
 h1{
 
@@ -79,8 +89,6 @@ h1{
   margin-bottom:10px;
 }
 
-/* TEXTO */
-
 p{
 
   text-align:center;
@@ -90,28 +98,33 @@ p{
   margin-bottom:40px;
 }
 
-/* ÁREA */
+/* =====================================
+ÁREA PRINCIPAL
+===================================== */
 
 .agendamento-box{
 
   display:grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
   gap:40px;
 }
 
-/* SUBTÍTULO */
+/* =====================================
+TÍTULOS
+===================================== */
 
 h2{
 
-  color:#d4af37;
-
   margin-bottom:20px;
+
+  color:#d4af37;
 }
 
-/* DATAS E HORÁRIOS */
+/* =====================================
+LISTAS
+===================================== */
 
 .datas,
 .horarios{
@@ -119,30 +132,40 @@ h2{
   display:grid;
 
   grid-template-columns:
-    repeat(auto-fit,minmax(120px,1fr));
+    repeat(auto-fit,minmax(140px,1fr));
 
   gap:15px;
 }
 
-/* BOTÕES */
+/* =====================================
+BOTÕES
+===================================== */
 
 .data-btn,
 .horario-btn{
 
-  padding:18px;
+  min-height:70px;
+
+  padding:15px;
 
   border:none;
 
-  border-radius:12px;
+  border-radius:15px;
+
+  font-size:1rem;
 
   font-weight:bold;
 
   cursor:pointer;
 
   transition:0.3s;
+
+  white-space:pre-line;
 }
 
-/* DISPONÍVEL */
+/* =====================================
+DISPONÍVEL
+===================================== */
 
 .disponivel{
 
@@ -151,40 +174,48 @@ h2{
   color:black;
 }
 
-/* OCUPADO */
-
-.ocupado{
-
-  background:#555;
-
-  color:#aaa;
-
-  cursor:not-allowed;
-}
-
-/* SELECIONADO */
-
-.selecionado{
-
-  outline:3px solid white;
-
-  transform:scale(1.05);
-}
-
-/* HOVER */
+/* =====================================
+HOVER
+===================================== */
 
 .disponivel:hover{
 
   transform:scale(1.05);
 }
 
-/* CONFIRMAR */
+/* =====================================
+SELECIONADO
+===================================== */
+
+.selecionado{
+
+  outline:4px solid white;
+
+  transform:scale(1.05);
+}
+
+/* =====================================
+OCUPADO
+===================================== */
+
+.ocupado{
+
+  background:#555;
+
+  color:#bbb;
+
+  cursor:not-allowed;
+}
+
+/* =====================================
+BOTÃO CONFIRMAR
+===================================== */
 
 .btn-confirmar{
 
-  margin-top:50px;
-
   width:100%;
+
+  margin-top:50px;
 
   padding:20px;
 
@@ -205,14 +236,22 @@ h2{
   transition:0.3s;
 }
 
-/* HOVER */
+/* =====================================
+BOTÃO DESATIVADO
+===================================== */
 
-.btn-confirmar:hover{
+.btn-confirmar:disabled{
 
-  transform:scale(1.02);
+  background:#666;
+
+  color:#aaa;
+
+  cursor:not-allowed;
 }
 
-/* RESPONSIVO */
+/* =====================================
+RESPONSIVO
+===================================== */
 
 @media(max-width:900px){
 
