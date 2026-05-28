@@ -1,364 +1,176 @@
-// ======================================
-// ELEMENTOS
-// ======================================
+// =====================================
+// QUANDO SITE CARREGA
+// =====================================
 
-const calendario =
-  document.querySelector("#calendario");
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-const horariosDiv =
-  document.querySelector("#horarios");
+    // =====================================
+    // CALENDÁRIO
+    // =====================================
 
-const mesAtual =
-  document.querySelector("#mesAtual");
-
-const btnAgendar =
-  document.querySelector("#btnAgendar");
-
-const btnLimpar =
-  document.querySelector("#btnLimpar");
-
-const statusUsuario =
-  document.querySelector("#statusUsuario");
-
-// ======================================
-// DATA ATUAL
-// ======================================
-
-const hoje = new Date();
-
-const ano =
-  hoje.getFullYear();
-
-const mes =
-  hoje.getMonth();
-
-const diaAtual =
-  hoje.getDate();
-
-// ======================================
-// MÊS
-// ======================================
-
-const meses = [
-
-  "Janeiro",
-  "Fevereiro",
-  "Março",
-  "Abril",
-  "Maio",
-  "Junho",
-  "Julho",
-  "Agosto",
-  "Setembro",
-  "Outubro",
-  "Novembro",
-  "Dezembro"
-
-];
-
-// ======================================
-// HORÁRIOS
-// ======================================
-
-const horarios = [
-
-  "09:00",
-  "10:00",
-  "11:00",
-  "13:00",
-  "14:00",
-  "15:00",
-  "16:00"
-
-];
-
-// ======================================
-// HORÁRIOS OCUPADOS
-// ======================================
-
-let horariosOcupados =
-  JSON.parse(
-    localStorage.getItem("horarios")
-  ) || {};
-
-// ======================================
-// LOGIN
-// ======================================
-
-const usuarioLogado =
-  localStorage.getItem("usuarioLogado");
-
-// ======================================
-// STATUS LOGIN
-// ======================================
-
-if(usuarioLogado){
-
-  statusUsuario.innerText =
-    `Logado como ${usuarioLogado}`;
-
-}else{
-
-  statusUsuario.innerText =
-    "Você não está logado";
-}
-
-// ======================================
-// SELEÇÕES
-// ======================================
-
-let diaSelecionado = null;
-
-let horarioSelecionado = null;
-
-// ======================================
-// MÊS
-// ======================================
-
-mesAtual.innerText =
-  `${meses[mes]} ${ano}`;
-
-// ======================================
-// QUANTIDADE DIAS
-// ======================================
-
-const totalDias =
-  new Date(
-    ano,
-    mes + 1,
-    0
-  ).getDate();
-
-// ======================================
-// GERAR CALENDÁRIO
-// ======================================
-
-for(let dia = 1; dia <= totalDias; dia++){
-
-  const botao =
-    document.createElement("button");
-
-  botao.innerText = dia;
-
-  botao.classList.add("dia");
-
-  // DIA PASSADO
-  if(dia < diaAtual){
-
-    botao.classList.add("passado");
-
-  }else{
-
-    botao.addEventListener("click", () => {
-
-      document
-        .querySelectorAll(".dia")
-        .forEach((item) => {
-
-          item.classList.remove(
-            "selecionado"
-          );
-
-        });
-
-      botao.classList.add(
-        "selecionado"
+    const calendarEl =
+      document.getElementById(
+        "calendar"
       );
 
-      diaSelecionado = dia;
+    // =====================================
+    // FULLCALENDAR
+    // =====================================
 
-      gerarHorarios();
+    const calendar =
+      new FullCalendar.Calendar(
+        calendarEl,
+        {
 
-    });
+          // =====================================
+          // VISUAL INICIAL
+          // =====================================
 
-  }
+          initialView:
+            "dayGridMonth",
 
-  calendario.appendChild(botao);
+          // =====================================
+          // IDIOMA
+          // =====================================
 
-}
+          locale:"pt-br",
 
-// ======================================
-// GERAR HORÁRIOS
-// ======================================
+          // =====================================
+          // ALTURA
+          // =====================================
 
-function gerarHorarios(){
+          height:"auto",
 
-  horariosDiv.innerHTML = "";
+          // =====================================
+          // BARRA SUPERIOR
+          // =====================================
 
-  horarios.forEach((hora) => {
+          headerToolbar:{
 
-    const botao =
-      document.createElement("button");
+            left:
+              "prev,next today",
 
-    botao.innerText = hora;
+            center:
+              "title",
 
-    botao.classList.add(
-      "horario"
-    );
+            right:
+              "dayGridMonth,timeGridWeek,timeGridDay"
 
-    const chave =
-      `${diaSelecionado}-${mes}-${ano}-${hora}`;
+          },
 
-    const agora =
-      new Date();
+          // =====================================
+          // HORÁRIOS
+          // =====================================
 
-    const [h,m] =
-      hora.split(":");
+          slotMinTime:"08:00:00",
 
-    const dataHorario =
-      new Date(
-        ano,
-        mes,
-        diaSelecionado,
-        h,
-        m
-      );
+          slotMaxTime:"20:00:00",
 
-    // HORÁRIO PASSADO
-    if(dataHorario < agora){
+          // =====================================
+          // EVENTOS EXEMPLO
+          // =====================================
 
-      botao.classList.add(
-        "horario-passado"
-      );
+          events:[
 
-    }
+            {
 
-    // HORÁRIO OCUPADO
-    else if(horariosOcupados[chave]){
+              title:
+                "Corte de Cabelo",
 
-      botao.classList.add(
-        "ocupado"
-      );
+              start:
+                "2026-05-28T10:00:00",
 
-    }
+              end:
+                "2026-05-28T11:00:00"
 
-    // DISPONÍVEL
-    else{
+            },
 
-      botao.classList.add(
-        "disponivel"
-      );
+            {
 
-      botao.addEventListener(
-        "click",
-        () => {
+              title:
+                "Barba Terapia",
 
-          document
-            .querySelectorAll(
-              ".horario"
-            )
-            .forEach((item) => {
+              start:
+                "2026-05-29T14:00:00",
 
-              item.classList.remove(
-                "selecionado"
+              end:
+                "2026-05-29T15:00:00"
+
+            }
+
+          ],
+
+          // =====================================
+          // CLIQUE NO DIA
+          // =====================================
+
+          dateClick:(info) => {
+
+            // =====================================
+            // LOGIN
+            // =====================================
+
+            const usuario =
+              localStorage.getItem(
+                "usuarioLogado"
               );
+
+            if(!usuario){
+
+              alert(
+                "Faça login para agendar."
+              );
+
+              return;
+            }
+
+            // =====================================
+            // NOME SERVIÇO
+            // =====================================
+
+            const servico =
+              prompt(
+                "Digite o serviço:"
+              );
+
+            // CANCELADO
+            if(!servico){
+
+              return;
+            }
+
+            // =====================================
+            // NOVO EVENTO
+            // =====================================
+
+            calendar.addEvent({
+
+              title:servico,
+
+              start:info.dateStr
 
             });
 
-          botao.classList.add(
-            "selecionado"
-          );
+            // =====================================
+            // SALVO
+            // =====================================
 
-          horarioSelecionado =
-            hora;
+            alert(
+              "Agendamento realizado!"
+            );
+
+          }
 
         }
       );
 
-    }
+    // =====================================
+    // RENDERIZA
+    // =====================================
 
-    horariosDiv.appendChild(botao);
-
-  });
-
-}
-
-// ======================================
-// AGENDAR
-// ======================================
-
-btnAgendar.addEventListener(
-  "click",
-  () => {
-
-    // LOGIN
-    if(!usuarioLogado){
-
-      alert(
-        "Você precisa estar logado para agendar."
-      );
-
-      return;
-    }
-
-    // DIA
-    if(!diaSelecionado){
-
-      alert(
-        "Selecione um dia."
-      );
-
-      return;
-    }
-
-    // HORÁRIO
-    if(!horarioSelecionado){
-
-      alert(
-        "Selecione um horário."
-      );
-
-      return;
-    }
-
-    const chave =
-      `${diaSelecionado}-${mes}-${ano}-${horarioSelecionado}`;
-
-    horariosOcupados[chave] = {
-
-      usuario:
-        usuarioLogado
-    };
-
-    localStorage.setItem(
-      "horarios",
-      JSON.stringify(
-        horariosOcupados
-      )
-    );
-
-    alert(
-      "Agendamento realizado com sucesso!"
-    );
-
-    gerarHorarios();
-
-  }
-);
-
-// ======================================
-// LIMPAR
-// ======================================
-
-btnLimpar.addEventListener(
-  "click",
-  () => {
-
-    diaSelecionado = null;
-
-    horarioSelecionado = null;
-
-    document
-      .querySelectorAll(".dia")
-      .forEach((item) => {
-
-        item.classList.remove(
-          "selecionado"
-        );
-
-      });
-
-    horariosDiv.innerHTML = "";
+    calendar.render();
 
   }
 );

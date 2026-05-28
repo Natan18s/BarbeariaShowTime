@@ -35,7 +35,7 @@ body{
 
   width:100%;
 
-  max-width:1100px;
+  max-width:1300px;
 
   margin:auto;
 
@@ -47,269 +47,28 @@ body{
     rgba(255,255,255,0.08);
 
   backdrop-filter:blur(10px);
-
-  text-align:center;
 }
 
-/* TÍTULOS */
+/* TÍTULO */
 
 h1{
 
-  color:#d4af37;
-
-  margin-bottom:10px;
-}
-
-h2{
-
-  margin-bottom:20px;
-
-  color:#d4af37;
-}
-
-/* TEXTO */
-
-p{
-
-  color:#ddd;
-
-  margin-bottom:20px;
-}
-
-/* STATUS */
-
-.status-login{
-
-  margin-bottom:25px;
-
-  font-weight:bold;
-
-  color:#d4af37;
-}
-
-/* LEGENDA */
-
-.legenda{
-
-  display:flex;
-
-  justify-content:center;
-
-  flex-wrap:wrap;
-
-  gap:25px;
+  text-align:center;
 
   margin-bottom:30px;
-}
 
-/* ITEM */
-
-.legenda-item{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-}
-
-/* QUADRADO */
-
-.cor{
-
-  width:20px;
-
-  height:20px;
-
-  border-radius:5px;
-}
-
-/* CORES */
-
-.disponivel-box{
-
-  background:#d4af37;
-}
-
-.ocupado-box{
-
-  background:#555;
-}
-
-.passado-box{
-
-  background:#222;
+  color:#d4af37;
 }
 
 /* CALENDÁRIO */
 
-.calendario{
+#calendar{
 
-  display:grid;
+  background:white;
 
-  grid-template-columns:
-    repeat(7, 1fr);
+  padding:20px;
 
-  gap:12px;
-
-  margin-bottom:40px;
-}
-
-/* DIA */
-
-.dia{
-
-  height:70px;
-
-  border:none;
-
-  border-radius:12px;
-
-  font-size:1rem;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  color:white;
-
-  cursor:pointer;
-
-  transition:0.3s;
-}
-
-/* DIA PASSADO */
-
-.passado{
-
-  background:#222;
-
-  color:#666;
-
-  cursor:not-allowed;
-}
-
-/* DIA SELECIONADO */
-
-.selecionado{
-
-  background:#d4af37;
-
-  color:black;
-}
-
-/* HOVER */
-
-.dia:hover:not(.passado){
-
-  transform:scale(1.05);
-}
-
-/* HORÁRIOS */
-
-.horarios{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(120px,1fr));
-
-  gap:20px;
-}
-
-/* HORÁRIO */
-
-.horario{
-
-  padding:18px;
-
-  border:none;
-
-  border-radius:10px;
-
-  font-weight:bold;
-
-  transition:0.3s;
-}
-
-/* DISPONÍVEL */
-
-.disponivel{
-
-  background:#d4af37;
-
-  color:black;
-
-  cursor:pointer;
-}
-
-/* OCUPADO */
-
-.ocupado{
-
-  background:#555;
-
-  color:#aaa;
-
-  cursor:not-allowed;
-}
-
-/* PASSADO */
-
-.horario-passado{
-
-  background:#222;
-
-  color:#666;
-
-  cursor:not-allowed;
-}
-
-/* HOVER */
-
-.disponivel:hover{
-
-  transform:scale(1.05);
-}
-
-/* AÇÕES */
-
-.acoes{
-
-  margin-top:40px;
-
-  display:flex;
-
-  justify-content:center;
-
-  gap:20px;
-
-  flex-wrap:wrap;
-}
-
-/* BOTÕES */
-
-.acoes button{
-
-  padding:15px 25px;
-
-  border:none;
-
-  border-radius:10px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-  background:#d4af37;
-
-  transition:0.3s;
-}
-
-/* HOVER */
-
-.acoes button:hover{
-
-  transform:scale(1.05);
+  border-radius:20px;
 }
 
 /* VOLTAR */
@@ -318,25 +77,9 @@ p{
 
   display:inline-block;
 
-  margin-top:40px;
+  margin-top:30px;
 
   color:#d4af37;
 
   text-decoration:none;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-  .calendario{
-
-    gap:8px;
-  }
-
-  .dia{
-
-    height:55px;
-  }
-
 }

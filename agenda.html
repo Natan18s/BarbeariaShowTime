@@ -4,19 +4,22 @@
 
 <head>
 
-  <!-- Caracteres -->
   <meta charset="UTF-8">
 
-  <!-- Responsivo -->
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
 
-  <!-- Título -->
   <title>
     Agenda | BarberShowTime
   </title>
+
+  <!-- FULLCALENDAR CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css"
+    rel="stylesheet"
+  >
 
   <!-- CSS -->
   <link
@@ -33,101 +36,11 @@
 
     <!-- TÍTULO -->
     <h1>
-      Agenda de Horários
+      Agenda Profissional
     </h1>
 
-    <!-- TEXTO -->
-    <p>
-      Escolha uma data e um horário disponível
-    </p>
-
-    <!-- STATUS LOGIN -->
-    <div class="status-login">
-
-      <span id="statusUsuario">
-        Você não está logado
-      </span>
-
-    </div>
-
-    <!-- LEGENDA -->
-    <div class="legenda">
-
-      <div class="legenda-item">
-
-        <div class="cor disponivel-box"></div>
-
-        <span>
-          Disponível
-        </span>
-
-      </div>
-
-      <div class="legenda-item">
-
-        <div class="cor ocupado-box"></div>
-
-        <span>
-          Ocupado
-        </span>
-
-      </div>
-
-      <div class="legenda-item">
-
-        <div class="cor passado-box"></div>
-
-        <span>
-          Horário Passado
-        </span>
-
-      </div>
-
-    </div>
-
-    <!-- MÊS -->
-    <h2 id="mesAtual"></h2>
-
     <!-- CALENDÁRIO -->
-    <div
-      class="calendario"
-      id="calendario"
-    >
-    </div>
-
-    <!-- HORÁRIOS -->
-    <div class="horarios-container">
-
-      <h2>
-        Horários
-      </h2>
-
-      <div
-        class="horarios"
-        id="horarios"
-      >
-      </div>
-
-    </div>
-
-    <!-- BOTÕES -->
-    <div class="acoes">
-
-      <!-- AGENDAR -->
-      <button id="btnAgendar">
-
-        Agendar Horário
-
-      </button>
-
-      <!-- LIMPAR -->
-      <button id="btnLimpar">
-
-        Remover Seleção
-
-      </button>
-
-    </div>
+    <div id="calendar"></div>
 
     <!-- VOLTAR -->
     <a
@@ -138,6 +51,9 @@
     </a>
 
   </div>
+
+  <!-- FULLCALENDAR JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
   <!-- JS -->
   <script src="assets/js/agenda.js"></script>
