@@ -24,7 +24,7 @@ body{
     center center
     /cover;
 
-  color:rgb(0, 0, 0);
+  color:white;
 
   padding:30px;
 }
@@ -71,6 +71,100 @@ h1{
   border-radius:20px;
 }
 
+/* =========================================
+   FULLCALENDAR
+========================================= */
+
+/* TEXTOS GERAIS */
+
+.fc{
+
+  color:#111 !important;
+}
+
+/* DIAS DA SEMANA */
+
+.fc-col-header-cell-cushion{
+
+  color:#111 !important;
+
+  font-weight:bold;
+}
+
+/* NÚMERO DOS DIAS */
+
+.fc-daygrid-day-number{
+
+  color:#111 !important;
+
+  font-weight:bold;
+}
+
+/* BOTÕES */
+
+.fc-button{
+
+  background:#d4af37 !important;
+
+  border:none !important;
+
+  color:black !important;
+
+  font-weight:bold !important;
+}
+
+/* BOTÃO HOVER */
+
+.fc-button:hover{
+
+  opacity:0.9;
+}
+
+/* EVENTOS */
+
+.fc-event{
+
+  background:#d4af37 !important;
+
+  border:none !important;
+
+  color:black !important;
+
+  font-weight:bold;
+}
+
+/* HOJE */
+
+.fc-day-today{
+
+  background:
+    rgba(212,175,55,0.15) !important;
+}
+
+/* TÍTULO MÊS */
+
+.fc-toolbar-title{
+
+  color:#111 !important;
+
+  font-weight:bold;
+}
+
+/* HORÁRIOS */
+
+.fc-timegrid-slot-label{
+
+  color:#111 !important;
+}
+
+/* LINHAS */
+
+.fc-theme-standard td,
+.fc-theme-standard th{
+
+  border-color:#ddd !important;
+}
+
 /* VOLTAR */
 
 .voltar{
@@ -82,4 +176,15 @@ h1{
   color:#d4af37;
 
   text-decoration:none;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+  .container{
+
+    padding:20px;
+  }
+
 }
