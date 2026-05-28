@@ -1,5 +1,5 @@
 // =====================================
-// QUANDO SITE CARREGA
+// SITE CARREGOU
 // =====================================
 
 document.addEventListener(
@@ -7,7 +7,7 @@ document.addEventListener(
   () => {
 
     // =====================================
-    // CALENDÁRIO
+    // ELEMENTO CALENDÁRIO
     // =====================================
 
     const calendarEl =
@@ -16,7 +16,18 @@ document.addEventListener(
       );
 
     // =====================================
-    // FULLCALENDAR
+    // EVENTOS SALVOS
+    // =====================================
+
+    let eventosSalvos =
+      JSON.parse(
+        localStorage.getItem(
+          "agendamentos"
+        )
+      ) || [];
+
+    // =====================================
+    // CALENDÁRIO
     // =====================================
 
     const calendar =
@@ -25,11 +36,11 @@ document.addEventListener(
         {
 
           // =====================================
-          // VISUAL INICIAL
+          // VISÃO INICIAL
           // =====================================
 
           initialView:
-            "dayGridMonth",
+            "timeGridWeek",
 
           // =====================================
           // IDIOMA
@@ -42,6 +53,30 @@ document.addEventListener(
           // =====================================
 
           height:"auto",
+
+          // =====================================
+          // HORÁRIO
+          // =====================================
+
+          slotMinTime:"08:00:00",
+
+          slotMaxTime:"20:00:00",
+
+          slotDuration:"01:00:00",
+
+          // =====================================
+          // FORMATO HORAS
+          // =====================================
+
+          slotLabelFormat:{
+
+            hour:"2-digit",
+
+            minute:"2-digit",
+
+            hour12:false
+
+          },
 
           // =====================================
           // BARRA SUPERIOR
@@ -61,55 +96,50 @@ document.addEventListener(
           },
 
           // =====================================
-          // HORÁRIOS
+          // TEXTO BOTÕES
           // =====================================
 
-          slotMinTime:"08:00:00",
+          buttonText:{
 
-          slotMaxTime:"20:00:00",
+            today:"Hoje",
 
-          // =====================================
-          // EVENTOS EXEMPLO
-          // =====================================
+            month:"Mês",
 
-          events:[
+            week:"Semana",
 
-            {
+            day:"Dia"
 
-              title:
-                "Corte de Cabelo",
-
-              start:
-                "2026-05-28T10:00:00",
-
-              end:
-                "2026-05-28T11:00:00"
-
-            },
-
-            {
-
-              title:
-                "Barba Terapia",
-
-              start:
-                "2026-05-29T14:00:00",
-
-              end:
-                "2026-05-29T15:00:00"
-
-            }
-
-          ],
+          },
 
           // =====================================
-          // CLIQUE NO DIA
+          // AGORA
+          // =====================================
+
+          nowIndicator:true,
+
+          // =====================================
+          // EVENTOS
+          // =====================================
+
+          events:eventosSalvos,
+
+          // =====================================
+          // BLOQUEAR PASSADO
+          // =====================================
+
+          validRange:{
+
+            start:new Date()
+          },
+
+          // =====================================
+          // CLIQUE HORÁRIO
           // =====================================
 
           dateClick:(info) => {
 
             // =====================================
-            // LOGIN
+            // USUÁRIO
             // =====================================
 
             const usuario =
@@ -117,26 +147,68 @@ document.addEventListener(
                 "usuarioLogado"
               );
 
+            // =====================================
+            // NÃO LOGADO
+            // =====================================
+
             if(!usuario){
 
               alert(
-                "Faça login para agendar."
+                "Você precisa estar logado para agendar."
               );
 
               return;
             }
 
             // =====================================
-            // NOME SERVIÇO
+            // DATA
             // =====================================
 
-            const servico =
-              prompt(
-                "Digite o serviço:"
+            const dataSelecionada =
+              info.dateStr;
+
+            // =====================================
+            // CONFIRMAÇÃO
+            // =====================================
+
+            const confirmar =
+              confirm(
+
+                `Deseja realmente agendar o horário:\n\n${dataSelecionada.replace("T"," às ")} ?`
+
               );
 
             // CANCELADO
-            if(!servico){
+            if(!confirmar){
+
+              return;
+            }
+
+            // =====================================
+            // VERIFICA DUPLICADO
+            // =====================================
+
+            const existe =
+              eventosSalvos.some(
+                (evento) => {
+
+                  return (
+                    evento.start ===
+                    dataSelecionada
+                  );
+
+                }
+              );
+
+            // =====================================
+            // JÁ OCUPADO
+            // =====================================
+
+            if(existe){
+
+              alert(
+                "Esse horário já está ocupado."
+              );
 
               return;
             }
@@ -145,20 +217,53 @@ document.addEventListener(
             // NOVO EVENTO
             // =====================================
 
-            calendar.addEvent({
+            const novoEvento = {
 
-              title:servico,
+              title:
+                "Horário Ocupado",
 
-              start:info.dateStr
+              start:
+                dataSelecionada,
 
-            });
+              end:
+                dataSelecionada,
+
+              color:"#d4af37"
+
+            };
 
             // =====================================
-            // SALVO
+            // ADICIONA
+            // =====================================
+
+            calendar.addEvent(
+              novoEvento
+            );
+
+            // =====================================
+            // SALVA
+            // =====================================
+
+            eventosSalvos.push(
+              novoEvento
+            );
+
+            localStorage.setItem(
+
+              "agendamentos",
+
+              JSON.stringify(
+                eventosSalvos
+              )
+
+            );
+
+            // =====================================
+            // SUCESSO
             // =====================================
 
             alert(
-              "Agendamento realizado!"
+              "Horário agendado com sucesso!"
             );
 
           }
