@@ -29,13 +29,30 @@ body{
   padding:30px;
 }
 
+/* VOLTAR */
+
+.btn-voltar{
+
+  position:absolute;
+
+  top:20px;
+
+  left:20px;
+
+  text-decoration:none;
+
+  color:#d4af37;
+
+  font-weight:bold;
+
+  font-size:1rem;
+}
+
 /* CONTAINER */
 
 .container{
 
-  width:100%;
-
-  max-width:1300px;
+  max-width:1200px;
 
   margin:auto;
 
@@ -47,6 +64,8 @@ body{
     rgba(255,255,255,0.08);
 
   backdrop-filter:blur(10px);
+
+  margin-top:50px;
 }
 
 /* TÍTULO */
@@ -55,136 +74,151 @@ h1{
 
   text-align:center;
 
-  margin-bottom:30px;
+  color:#d4af37;
+
+  margin-bottom:10px;
+}
+
+/* TEXTO */
+
+p{
+
+  text-align:center;
+
+  color:#ddd;
+
+  margin-bottom:40px;
+}
+
+/* ÁREA */
+
+.agendamento-box{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:40px;
+}
+
+/* SUBTÍTULO */
+
+h2{
 
   color:#d4af37;
+
+  margin-bottom:20px;
 }
 
-/* CALENDÁRIO */
+/* DATAS E HORÁRIOS */
 
-#calendar{
+.datas,
+.horarios{
 
-  background:white;
+  display:grid;
 
-  padding:20px;
+  grid-template-columns:
+    repeat(auto-fit,minmax(120px,1fr));
 
-  border-radius:20px;
-}
-
-/* =========================================
-   FULLCALENDAR
-========================================= */
-
-/* TEXTOS GERAIS */
-
-.fc{
-
-  color:#111 !important;
-}
-
-/* DIAS DA SEMANA */
-
-.fc-col-header-cell-cushion{
-
-  color:#111 !important;
-
-  font-weight:bold;
-}
-
-/* NÚMERO DOS DIAS */
-
-.fc-daygrid-day-number{
-
-  color:#111 !important;
-
-  font-weight:bold;
+  gap:15px;
 }
 
 /* BOTÕES */
 
-.fc-button{
+.data-btn,
+.horario-btn{
 
-  background:#d4af37 !important;
+  padding:18px;
 
-  border:none !important;
+  border:none;
 
-  color:black !important;
-
-  font-weight:bold !important;
-}
-
-/* BOTÃO HOVER */
-
-.fc-button:hover{
-
-  opacity:0.9;
-}
-
-/* EVENTOS */
-
-.fc-event{
-
-  background:#d4af37 !important;
-
-  border:none !important;
-
-  color:black !important;
+  border-radius:12px;
 
   font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
 }
 
-/* HOJE */
+/* DISPONÍVEL */
 
-.fc-day-today{
+.disponivel{
 
-  background:
-    rgba(212,175,55,0.15) !important;
+  background:#d4af37;
+
+  color:black;
 }
 
-/* TÍTULO MÊS */
+/* OCUPADO */
 
-.fc-toolbar-title{
+.ocupado{
 
-  color:#111 !important;
+  background:#555;
+
+  color:#aaa;
+
+  cursor:not-allowed;
+}
+
+/* SELECIONADO */
+
+.selecionado{
+
+  outline:3px solid white;
+
+  transform:scale(1.05);
+}
+
+/* HOVER */
+
+.disponivel:hover{
+
+  transform:scale(1.05);
+}
+
+/* CONFIRMAR */
+
+.btn-confirmar{
+
+  margin-top:50px;
+
+  width:100%;
+
+  padding:20px;
+
+  border:none;
+
+  border-radius:15px;
+
+  background:#d4af37;
+
+  color:black;
+
+  font-size:1rem;
 
   font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
 }
 
-/* HORÁRIOS */
+/* HOVER */
 
-.fc-timegrid-slot-label{
+.btn-confirmar:hover{
 
-  color:#111 !important;
-}
-
-/* LINHAS */
-
-.fc-theme-standard td,
-.fc-theme-standard th{
-
-  border-color:#ddd !important;
-}
-
-/* VOLTAR */
-
-.voltar{
-
-  display:inline-block;
-
-  margin-top:30px;
-
-  color:#d4af37;
-
-  text-decoration:none;
+  transform:scale(1.02);
 }
 
 /* RESPONSIVO */
 
-@media(max-width:768px){
+@media(max-width:900px){
 
-  .container{
+  .agendamento-box{
 
-    padding:20px;
+    grid-template-columns:1fr;
   }
 
 }

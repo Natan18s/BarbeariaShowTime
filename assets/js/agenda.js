@@ -1,281 +1,360 @@
-// =====================================
-// SITE CARREGOU
-// =====================================
+// ======================================
+// ELEMENTOS
+// ======================================
 
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
+const datasDiv =
+  document.querySelector("#datas");
 
-    // =====================================
-    // ELEMENTO CALENDÁRIO
-    // =====================================
+const horariosDiv =
+  document.querySelector("#horarios");
 
-    const calendarEl =
-      document.getElementById(
-        "calendar"
+const btnConfirmar =
+  document.querySelector("#btnConfirmar");
+
+// ======================================
+// DATA ATUAL
+// ======================================
+
+const hoje =
+  new Date();
+
+// ======================================
+// HORÁRIOS
+// ======================================
+
+const horarios = [
+
+  "08:00",
+  "09:00",
+  "10:00",
+  "11:00",
+  "13:00",
+  "14:00",
+  "15:00",
+  "16:00",
+  "17:00",
+  "18:00"
+
+];
+
+// ======================================
+// AGENDAMENTOS
+// ======================================
+
+let agendamentos =
+  JSON.parse(
+    localStorage.getItem(
+      "agendamentos"
+    )
+  ) || [];
+
+// ======================================
+// SELEÇÕES
+// ======================================
+
+let dataSelecionada = null;
+
+let horarioSelecionado = null;
+
+// ======================================
+// GERAR DATAS
+// ======================================
+
+for(let i = 0; i < 30; i++){
+
+  const data =
+    new Date();
+
+  data.setDate(
+    hoje.getDate() + i
+  );
+
+  const ano =
+    data.getFullYear();
+
+  const mes =
+    String(
+      data.getMonth() + 1
+    ).padStart(2,"0");
+
+  const dia =
+    String(
+      data.getDate()
+    ).padStart(2,"0");
+
+  const dataFormatada =
+    `${ano}-${mes}-${dia}`;
+
+  // ======================================
+  // BOTÃO
+  // ======================================
+
+  const botao =
+    document.createElement(
+      "button"
+    );
+
+  botao.classList.add(
+    "data-btn",
+    "disponivel"
+  );
+
+  botao.innerText =
+    `${dia}/${mes}`;
+
+  // ======================================
+  // CLIQUE
+  // ======================================
+
+  botao.addEventListener(
+    "click",
+    () => {
+
+      document
+        .querySelectorAll(
+          ".data-btn"
+        )
+        .forEach((btn) => {
+
+          btn.classList.remove(
+            "selecionado"
+          );
+
+        });
+
+      botao.classList.add(
+        "selecionado"
       );
 
-    // =====================================
-    // EVENTOS SALVOS
-    // =====================================
+      dataSelecionada =
+        dataFormatada;
 
-    let eventosSalvos =
-      JSON.parse(
-        localStorage.getItem(
-          "agendamentos"
-        )
-      ) || [];
+      gerarHorarios();
 
-    // =====================================
-    // CALENDÁRIO
-    // =====================================
+    }
+  );
 
-    const calendar =
-      new FullCalendar.Calendar(
-        calendarEl,
-        {
+  datasDiv.appendChild(
+    botao
+  );
 
-          // =====================================
-          // VISÃO INICIAL
-          // =====================================
+}
 
-          initialView:
-            "timeGridWeek",
+// ======================================
+// GERAR HORÁRIOS
+// ======================================
 
-          // =====================================
-          // IDIOMA
-          // =====================================
+function gerarHorarios(){
 
-          locale:"pt-br",
+  horariosDiv.innerHTML = "";
 
-          // =====================================
-          // ALTURA
-          // =====================================
+  horarios.forEach((hora) => {
 
-          height:"auto",
+    const botao =
+      document.createElement(
+        "button"
+      );
 
-          // =====================================
-          // HORÁRIO
-          // =====================================
+    botao.classList.add(
+      "horario-btn"
+    );
 
-          slotMinTime:"08:00:00",
+    // ======================================
+    // DATA HORÁRIO
+    // ======================================
 
-          slotMaxTime:"20:00:00",
+    const dataHora =
+      `${dataSelecionada}T${hora}`;
 
-          slotDuration:"01:00:00",
+    // ======================================
+    // AGENDADO
+    // ======================================
 
-          // =====================================
-          // FORMATO HORAS
-          // =====================================
+    const ocupado =
+      agendamentos.some(
+        (agendamento) => {
 
-          slotLabelFormat:{
-
-            hour:"2-digit",
-
-            minute:"2-digit",
-
-            hour12:false
-
-          },
-
-          // =====================================
-          // BARRA SUPERIOR
-          // =====================================
-
-          headerToolbar:{
-
-            left:
-              "prev,next today",
-
-            center:
-              "title",
-
-            right:
-              "dayGridMonth,timeGridWeek,timeGridDay"
-
-          },
-
-          // =====================================
-          // TEXTO BOTÕES
-          // =====================================
-
-          buttonText:{
-
-            today:"Hoje",
-
-            month:"Mês",
-
-            week:"Semana",
-
-            day:"Dia"
-
-          },
-
-          // =====================================
-          // AGORA
-          // =====================================
-
-          nowIndicator:true,
-
-          // =====================================
-          // EVENTOS
-          // =====================================
-
-          events:eventosSalvos,
-
-          // =====================================
-          // BLOQUEAR PASSADO
-          // =====================================
-
-          validRange:{
-
-            start:new Date()
-          },
-
-          // =====================================
-          // CLIQUE HORÁRIO
-          // =====================================
-
-          dateClick:(info) => {
-
-            // =====================================
-            // USUÁRIO
-            // =====================================
-
-            const usuario =
-              localStorage.getItem(
-                "usuarioLogado"
-              );
-
-            // =====================================
-            // NÃO LOGADO
-            // =====================================
-
-            if(!usuario){
-
-              alert(
-                "Você precisa estar logado para agendar."
-              );
-
-              return;
-            }
-
-            // =====================================
-            // DATA
-            // =====================================
-
-            const dataSelecionada =
-              info.dateStr;
-
-            // =====================================
-            // CONFIRMAÇÃO
-            // =====================================
-
-            const confirmar =
-              confirm(
-
-                `Deseja realmente agendar o horário:\n\n${dataSelecionada.replace("T"," às ")} ?`
-
-              );
-
-            // CANCELADO
-            if(!confirmar){
-
-              return;
-            }
-
-            // =====================================
-            // VERIFICA DUPLICADO
-            // =====================================
-
-            const existe =
-              eventosSalvos.some(
-                (evento) => {
-
-                  return (
-                    evento.start ===
-                    dataSelecionada
-                  );
-
-                }
-              );
-
-            // =====================================
-            // JÁ OCUPADO
-            // =====================================
-
-            if(existe){
-
-              alert(
-                "Esse horário já está ocupado."
-              );
-
-              return;
-            }
-
-            // =====================================
-            // NOVO EVENTO
-            // =====================================
-
-            const novoEvento = {
-
-              title:
-                "Horário Ocupado",
-
-              start:
-                dataSelecionada,
-
-              end:
-                dataSelecionada,
-
-              color:"#d4af37"
-
-            };
-
-            // =====================================
-            // ADICIONA
-            // =====================================
-
-            calendar.addEvent(
-              novoEvento
-            );
-
-            // =====================================
-            // SALVA
-            // =====================================
-
-            eventosSalvos.push(
-              novoEvento
-            );
-
-            localStorage.setItem(
-
-              "agendamentos",
-
-              JSON.stringify(
-                eventosSalvos
-              )
-
-            );
-
-            // =====================================
-            // SUCESSO
-            // =====================================
-
-            alert(
-              "Horário agendado com sucesso!"
-            );
-
-          }
+          return (
+            agendamento.dataHora ===
+            dataHora
+          );
 
         }
       );
 
-    // =====================================
-    // RENDERIZA
-    // =====================================
+    // ======================================
+    // TEXTO
+    // ======================================
 
-    calendar.render();
+    if(ocupado){
+
+      botao.innerText =
+        `${hora}\nHorário Ocupado`;
+
+      botao.classList.add(
+        "ocupado"
+      );
+
+    }else{
+
+      botao.innerText =
+        hora;
+
+      botao.classList.add(
+        "disponivel"
+      );
+
+      // ======================================
+      // CLIQUE
+      // ======================================
+
+      botao.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(
+              ".horario-btn"
+            )
+            .forEach((btn) => {
+
+              btn.classList.remove(
+                "selecionado"
+              );
+
+            });
+
+          botao.classList.add(
+            "selecionado"
+          );
+
+          horarioSelecionado =
+            hora;
+
+        }
+      );
+
+    }
+
+    horariosDiv.appendChild(
+      botao
+    );
+
+  });
+
+}
+
+// ======================================
+// CONFIRMAR
+// ======================================
+
+btnConfirmar.addEventListener(
+  "click",
+  () => {
+
+    // ======================================
+    // LOGIN
+    // ======================================
+
+    const usuario =
+      localStorage.getItem(
+        "usuarioLogado"
+      );
+
+    if(!usuario){
+
+      alert(
+        "Você precisa estar logado para agendar."
+      );
+
+      return;
+    }
+
+    // ======================================
+    // DATA
+    // ======================================
+
+    if(!dataSelecionada){
+
+      alert(
+        "Selecione uma data."
+      );
+
+      return;
+    }
+
+    // ======================================
+    // HORÁRIO
+    // ======================================
+
+    if(!horarioSelecionado){
+
+      alert(
+        "Selecione um horário."
+      );
+
+      return;
+    }
+
+    // ======================================
+    // CONFIRMAÇÃO
+    // ======================================
+
+    const confirmar =
+      confirm(
+
+        `Deseja confirmar o agendamento?\n\nDia: ${dataSelecionada}\nHorário: ${horarioSelecionado}`
+
+      );
+
+    if(!confirmar){
+
+      return;
+    }
+
+    // ======================================
+    // SALVAR
+    // ======================================
+
+    const novoAgendamento = {
+
+      usuario,
+
+      dataHora:
+        `${dataSelecionada}T${horarioSelecionado}`
+
+    };
+
+    agendamentos.push(
+      novoAgendamento
+    );
+
+    localStorage.setItem(
+
+      "agendamentos",
+
+      JSON.stringify(
+        agendamentos
+      )
+
+    );
+
+    // ======================================
+    // SUCESSO
+    // ======================================
+
+    alert(
+      "Agendamento realizado com sucesso!"
+    );
+
+    // ======================================
+    // RESET
+    // ======================================
+
+    horarioSelecionado =
+      null;
+
+    gerarHorarios();
 
   }
 );

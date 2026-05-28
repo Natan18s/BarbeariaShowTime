@@ -4,22 +4,19 @@
 
 <head>
 
+  <!-- CARACTERES -->
   <meta charset="UTF-8">
 
+  <!-- RESPONSIVO -->
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
 
+  <!-- TÍTULO -->
   <title>
     Agenda | BarberShowTime
   </title>
-
-  <!-- FULLCALENDAR CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css"
-    rel="stylesheet"
-  >
 
   <!-- CSS -->
   <link
@@ -31,29 +28,71 @@
 
 <body>
 
+  <!-- VOLTAR -->
+  <a
+    href="index.html"
+    class="btn-voltar"
+  >
+    ← Voltar ao início
+  </a>
+
   <!-- CONTAINER -->
   <div class="container">
 
     <!-- TÍTULO -->
     <h1>
-      Agenda Profissional
+      Agendamento de Horários
     </h1>
 
-    <!-- CALENDÁRIO -->
-    <div id="calendar"></div>
+    <!-- TEXTO -->
+    <p>
+      Escolha uma data e um horário disponível
+    </p>
 
-    <!-- VOLTAR -->
-    <a
-      href="index.html"
-      class="voltar"
+    <!-- ÁREA -->
+    <div class="agendamento-box">
+
+      <!-- DATAS -->
+      <div class="datas-box">
+
+        <h2>
+          Escolha o Dia
+        </h2>
+
+        <div
+          class="datas"
+          id="datas"
+        >
+        </div>
+
+      </div>
+
+      <!-- HORÁRIOS -->
+      <div class="horarios-box">
+
+        <h2>
+          Escolha o Horário
+        </h2>
+
+        <div
+          class="horarios"
+          id="horarios"
+        >
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTÃO -->
+    <button
+      id="btnConfirmar"
+      class="btn-confirmar"
     >
-      Voltar ao início
-    </a>
+      Confirmar Agendamento
+    </button>
 
   </div>
-
-  <!-- FULLCALENDAR JS -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
   <!-- JS -->
   <script src="assets/js/agenda.js"></script>
